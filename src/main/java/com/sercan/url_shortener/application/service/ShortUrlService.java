@@ -32,15 +32,15 @@ public class ShortUrlService implements ShortUrlUseCase {
 
     @Override
     @Transactional
-    public ShortUrl createShortUrl(String originalUrl) {
+    public ShortUrl createShortUrl(URI originalUri) {
 
-        log.debug("Creating short url with original url {}", originalUrl);
+        log.debug("Creating short url with original url {}", originalUri);
         ShortUrl savedWithoutCode = shortUrlRepository.save(
                 new ShortUrl(
                         null,
-                        URI.create(originalUrl),
+                        originalUri,
                         null,
-                        null,
+                        true,
                         null,
                         null
                 )
@@ -56,13 +56,13 @@ public class ShortUrlService implements ShortUrlUseCase {
                 savedWithoutCode.createdAt(),
                 savedWithoutCode.expiresAt()
         );
-        log.debug("Created short url with original url {}", originalUrl);
+        log.debug("Created short url with original url {}", originalUri);
 
         return shortUrlRepository.save(savedWithCode);
     }
 
     @Override
-    public URI getOriginalURL(String shortCode) {
+    public URI resolveShortCode(String shortCode) {
         Optional<ShortUrl> shortUrlOptional = shortUrlRepository.findByShortCode(shortCode);
         log.info("Getting original url for short code {}", shortCode);
 

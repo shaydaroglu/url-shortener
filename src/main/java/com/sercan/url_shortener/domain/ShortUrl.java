@@ -7,7 +7,7 @@ public record ShortUrl(
         Long id,
         URI originalUrl,
         String shortCode,
-        Boolean isActive,
+        boolean isActive,
         OffsetDateTime createdAt,
         OffsetDateTime expiresAt
 ) {

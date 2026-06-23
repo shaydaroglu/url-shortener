@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table
+@Table(name = "shortened_urls")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -17,11 +17,11 @@ public class ShortUrlEntity {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "short_code", length = 4, unique = true)
-    private String shortCode;
-
     @Column(name = "original_url", nullable = false, length = 2048)
     private String originalUrl;
+
+    @Column(name = "short_code", length = 4, unique = true)
+    private String shortCode;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
@@ -31,17 +31,4 @@ public class ShortUrlEntity {
 
     @Column(name = "expires_at")
     private OffsetDateTime expiresAt;
-
-    public static ShortUrlEntity createWithoutShortCode(String originalUrl, OffsetDateTime expiresAt) {
-        return new ShortUrlEntity(null, null, originalUrl, expiresAt);
-    }
-
-    public static ShortUrlEntity withShortCode(
-            Long id,
-            String shortCode,
-            String originalUrl,
-            OffsetDateTime expiresAt
-    ) {
-        return new ShortUrlEntity(id, shortCode, originalUrl, expiresAt);
-    }
 }
