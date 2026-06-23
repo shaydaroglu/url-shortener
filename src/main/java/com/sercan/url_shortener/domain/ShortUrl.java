@@ -1,13 +1,13 @@
 package com.sercan.url_shortener.domain;
 
-import java.net.URL;
+import java.net.URI;
 import java.time.OffsetDateTime;
 
 public record ShortUrl(
         Long id,
-        URL originalUrl,
+        URI originalUrl,
         String shortCode,
-        Boolean active,
+        Boolean isActive,
         OffsetDateTime createdAt,
         OffsetDateTime expiresAt
 ) {
