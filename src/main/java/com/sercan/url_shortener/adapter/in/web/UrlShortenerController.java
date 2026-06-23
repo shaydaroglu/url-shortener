@@ -45,7 +45,7 @@ public class UrlShortenerController {
                 ));
     }
 
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[a-zA-Z0-9]{4}}")
     public ResponseEntity<Void> redirect(
             @PathVariable String shortCode
     ) {
