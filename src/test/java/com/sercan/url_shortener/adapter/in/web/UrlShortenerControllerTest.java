@@ -70,7 +70,7 @@ public class UrlShortenerControllerTest {
                                   "original_url": "https://google.com"
                                 }
                                 """))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.original_url").value("https://google.com"))
                 .andExpect(jsonPath("$.short_code").value("byv5"))
                 .andExpect(jsonPath("$.shortened_url").value("http://localhost/byv5"));
@@ -95,7 +95,7 @@ public class UrlShortenerControllerTest {
                               "original_url": "https://www.google.com/search?q=url+shortener&source=test"
                             }
                             """))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.original_url").value(originalUrl))
                 .andExpect(jsonPath("$.short_code").value("byv5"))
                 .andExpect(jsonPath("$.shortened_url").value("http://localhost/byv5"));

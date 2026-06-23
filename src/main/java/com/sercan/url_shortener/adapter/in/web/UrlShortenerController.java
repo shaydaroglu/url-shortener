@@ -29,20 +29,21 @@ public class UrlShortenerController {
 
         URI original = URI.create(request.originalUrl());
         ShortUrl shortUrl = shortUrlUseCase.createShortUrl(original);
-        String shortenedUrl = ServletUriComponentsBuilder
+        URI shortenedUrl = ServletUriComponentsBuilder
                 .fromRequestUri(servletRequest)
                 .replacePath("/" + shortUrl.shortCode())
                 .replaceQuery(null)
                 .build()
-                .toUriString();
+                .toUri();
+
+        CreateShortUrlResponse response = new CreateShortUrlResponse(
+                shortUrl.originalUrl().toString(),
+                shortUrl.shortCode(),
+                shortenedUrl.toString());
 
         return ResponseEntity
-                .ok()
-                .body(new CreateShortUrlResponse(
-                        shortUrl.originalUrl().toString(),
-                        shortUrl.shortCode(),
-                        shortenedUrl
-                ));
+                .created(shortenedUrl)
+                .body(response);
     }
 
     @GetMapping("/{shortCode:[a-zA-Z0-9]{4}}")
