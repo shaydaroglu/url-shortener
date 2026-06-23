@@ -7,12 +7,6 @@ public record ShortUrl(
         Long id,
         URI originalUrl,
         String shortCode,
-        boolean isActive,
-        OffsetDateTime createdAt,
-        OffsetDateTime expiresAt
+        OffsetDateTime createdAt
 ) {
-
-    public boolean isExpired() {
-        return expiresAt.isBefore(OffsetDateTime.now());
-    }
 }

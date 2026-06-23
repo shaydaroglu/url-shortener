@@ -13,9 +13,7 @@ public class ShortUrlMapper {
                 entity.getId(),
                 URI.create(entity.getOriginalUrl()),
                 entity.getShortCode(),
-                entity.isActive(),
-                entity.getCreatedAt(),
-                entity.getExpiresAt()
+                entity.getCreatedAt()
         );
     }
 
@@ -24,9 +22,7 @@ public class ShortUrlMapper {
                 domain.id(),
                 domain.originalUrl().toString(),
                 domain.shortCode(),
-                domain.isActive(),
-                domain.createdAt(),
-                domain.expiresAt()
+                domain.createdAt()
         );
     }
 }

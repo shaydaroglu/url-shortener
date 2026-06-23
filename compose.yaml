@@ -1,1 +1,8 @@
-services: {}
+services:
+  url-shortener:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: url-shortener
+    ports:
+      - "8080:8080"

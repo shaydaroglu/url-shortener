@@ -27,8 +27,6 @@ public class ShortUrlPersistenceAdapterTest {
                 null,
                 URI.create("https://google.com"),
                 null,
-                true,
-                null,
                 null
         );
 
@@ -37,7 +35,6 @@ public class ShortUrlPersistenceAdapterTest {
         assertThat(saved.id()).isNotNull();
         assertThat(saved.originalUrl()).isEqualTo(URI.create("https://google.com"));
         assertThat(saved.shortCode()).isNull();
-        assertThat(saved.isActive()).isTrue();
     }
 
     @Test
@@ -46,8 +43,6 @@ public class ShortUrlPersistenceAdapterTest {
                 new ShortUrl(
                         null,
                         URI.create("https://google.com"),
-                        null,
-                        true,
                         null,
                         null
                 )
@@ -58,9 +53,7 @@ public class ShortUrlPersistenceAdapterTest {
                         savedWithoutCode.id(),
                         savedWithoutCode.originalUrl(),
                         "byv5",
-                        savedWithoutCode.isActive(),
-                        savedWithoutCode.createdAt(),
-                        savedWithoutCode.expiresAt()
+                        savedWithoutCode.createdAt()
                 )
         );
 

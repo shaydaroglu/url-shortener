@@ -42,9 +42,7 @@ public class ShortUrlServiceTest {
                                 1L,
                                 shortUrl.originalUrl(),
                                 null,
-                                shortUrl.isActive(),
-                                createdAt,
-                                shortUrl.expiresAt()
+                                createdAt
                         );
                     }
 
@@ -56,7 +54,6 @@ public class ShortUrlServiceTest {
         assertThat(result.id()).isEqualTo(1L);
         assertThat(result.originalUrl()).isEqualTo(originalUrl);
         assertThat(result.shortCode()).isEqualTo("byv5");
-        assertThat(result.isActive()).isTrue();
 
         ArgumentCaptor<ShortUrl> captor = ArgumentCaptor.forClass(ShortUrl.class);
         verify(shortUrlRepository, times(2)).save(captor.capture());
@@ -87,9 +84,7 @@ public class ShortUrlServiceTest {
                                 2L,
                                 shortUrl.originalUrl(),
                                 null,
-                                shortUrl.isActive(),
-                                createdAt,
-                                shortUrl.expiresAt()
+                                createdAt
                         );
                     }
 
@@ -112,9 +107,7 @@ public class ShortUrlServiceTest {
                         14_776_337L,
                         originalUrl,
                         null,
-                        true,
-                        OffsetDateTime.now(),
-                        null
+                        OffsetDateTime.now()
                 ));
 
         assertThatThrownBy(() -> service.createShortUrl(originalUrl))
@@ -134,9 +127,7 @@ public class ShortUrlServiceTest {
                         1L,
                         originalUrl,
                         "byv5",
-                        true,
-                        OffsetDateTime.now(),
-                        null
+                        OffsetDateTime.now()
                 )));
 
         URI result = service.resolveShortCode("byv5");
@@ -166,9 +157,7 @@ public class ShortUrlServiceTest {
                         0L,
                         originalUrl,
                         null,
-                        true,
-                        OffsetDateTime.now(),
-                        null
+                        OffsetDateTime.now()
                 ));
 
         assertThatThrownBy(() -> service.createShortUrl(originalUrl))

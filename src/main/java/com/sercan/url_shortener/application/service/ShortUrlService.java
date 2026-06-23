@@ -41,8 +41,6 @@ public class ShortUrlService implements ShortUrlUseCase {
                         null,
                         originalUri,
                         null,
-                        true,
-                        null,
                         null
                 )
         );
@@ -53,9 +51,7 @@ public class ShortUrlService implements ShortUrlUseCase {
                 savedWithoutCode.id(),
                 savedWithoutCode.originalUrl(),
                 shortCode,
-                savedWithoutCode.isActive(),
-                savedWithoutCode.createdAt(),
-                savedWithoutCode.expiresAt()
+                savedWithoutCode.createdAt()
         );
         log.debug("Created short url with original url {}", originalUri);
 

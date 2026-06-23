@@ -60,9 +60,7 @@ public class UrlShortenerControllerTest {
                         1L,
                         originalUrl,
                         "byv5",
-                        true,
-                        OffsetDateTime.now(),
-                        null
+                        OffsetDateTime.now()
                 ));
 
         mockMvc.perform(post("/")
@@ -87,9 +85,7 @@ public class UrlShortenerControllerTest {
                         1L,
                         URI.create(originalUrl),
                         "byv5",
-                        true,
-                        OffsetDateTime.now(),
-                        null
+                        OffsetDateTime.now()
                 ));
 
         mockMvc.perform(post("/")

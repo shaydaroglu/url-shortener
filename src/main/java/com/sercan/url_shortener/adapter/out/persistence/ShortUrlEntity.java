@@ -23,12 +23,6 @@ public class ShortUrlEntity {
     @Column(name = "short_code", length = 4, unique = true)
     private String shortCode;
 
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
-
     @Column(name = "created_at", nullable = false, insertable = false, updatable = false)
     private OffsetDateTime createdAt;
-
-    @Column(name = "expires_at")
-    private OffsetDateTime expiresAt;
 }
