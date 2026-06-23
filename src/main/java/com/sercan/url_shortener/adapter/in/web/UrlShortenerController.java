@@ -27,7 +27,8 @@ public class UrlShortenerController {
                                                                  HttpServletRequest servletRequest) {
         log.info("Creating short URL for originalUrl={}", request.originalUrl());
 
-        ShortUrl shortUrl = shortUrlUseCase.createShortUrl(request.originalUrl());
+        URI original = URI.create(request.originalUrl());
+        ShortUrl shortUrl = shortUrlUseCase.createShortUrl(original);
         String shortenedUrl = ServletUriComponentsBuilder
                 .fromRequestUri(servletRequest)
                 .replacePath("/" + shortUrl.shortCode())

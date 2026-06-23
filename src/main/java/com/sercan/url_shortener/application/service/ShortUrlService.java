@@ -3,6 +3,7 @@ package com.sercan.url_shortener.application.service;
 import com.sercan.url_shortener.application.port.in.ShortUrlUseCase;
 import com.sercan.url_shortener.application.port.out.ShortUrlRepository;
 import com.sercan.url_shortener.domain.ShortUrl;
+import com.sercan.url_shortener.domain.exception.InvalidShortCodeGenerationException;
 import com.sercan.url_shortener.domain.exception.NoShortCodesAvailableException;
 import com.sercan.url_shortener.domain.exception.ShortCodeNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -67,7 +68,7 @@ public class ShortUrlService implements ShortUrlUseCase {
         log.info("Getting original url for short code {}", shortCode);
 
         if (shortUrlOptional.isEmpty()) {
-            log.error("No short code found for short code {}", shortCode);
+            log.warn("No short code found for short code {}", shortCode);
             throw new ShortCodeNotFoundException(shortCode);
         }
 
@@ -76,7 +77,7 @@ public class ShortUrlService implements ShortUrlUseCase {
 
     private static String generateShortCodeFromId(Long id) {
         if (id == null || id <= 0) {
-            throw new IllegalArgumentException("ID must be positive, given id is: " + id);
+            throw new InvalidShortCodeGenerationException(id);
         }
 
         long value = id - 1;
