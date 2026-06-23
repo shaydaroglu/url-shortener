@@ -133,7 +133,7 @@ public class UrlShortenerControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.status").value(400))
                 .andExpect(jsonPath("$.title").value("Validation failed"))
-                .andExpect(jsonPath("$.detail").value("originalUrl: Original URL must not exceed 2048 characters"));
+                .andExpect(jsonPath("$.detail").value("Original URL must not exceed 2048 characters"));
     }
 
     @Test
@@ -157,6 +157,7 @@ public class UrlShortenerControllerTest {
                         .content("{}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.status").value(400))
-                .andExpect(jsonPath("$.title").value("Validation failed"));
+                .andExpect(jsonPath("$.title").value("Validation failed"))
+                .andExpect(jsonPath("$.detail").value("Field 'original_url' is required"));
     }
 }

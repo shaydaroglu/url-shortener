@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
         String detail = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .map(error -> error.getDefaultMessage())
                 .findFirst()
                 .orElse("Validation failed");
 

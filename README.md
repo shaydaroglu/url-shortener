@@ -88,7 +88,7 @@ Location: https://www.google.com/search?q=url+shortener
 
 The original URL must:
 
-* Not be blank
+* Not be null
 * Start with `http://` or `https://`
 * Have a valid domain
 * Not exceed 2048 characters
