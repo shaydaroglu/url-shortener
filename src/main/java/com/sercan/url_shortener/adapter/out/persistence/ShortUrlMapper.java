@@ -3,7 +3,6 @@ package com.sercan.url_shortener.adapter.out.persistence;
 import com.sercan.url_shortener.domain.ShortUrl;
 import lombok.experimental.UtilityClass;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 
 @UtilityClass
