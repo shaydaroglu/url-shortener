@@ -31,7 +31,7 @@ docker-build:
 	$(DOCKER_COMPOSE) build
 
 docker-up:
-	$(DOCKER_COMPOSE) up --build
+	$(DOCKER_COMPOSE) up --build -d
 
 docker-down:
 	$(DOCKER_COMPOSE) down
