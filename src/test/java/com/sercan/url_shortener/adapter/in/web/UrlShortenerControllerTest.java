@@ -63,7 +63,7 @@ public class UrlShortenerControllerTest {
                         OffsetDateTime.now()
                 ));
 
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -89,7 +89,7 @@ public class UrlShortenerControllerTest {
                         OffsetDateTime.now()
                 ));
 
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                             {
@@ -105,7 +105,7 @@ public class UrlShortenerControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenUrlIsInvalid() throws Exception {
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -127,7 +127,7 @@ public class UrlShortenerControllerTest {
             }
             """.formatted(tooLongUrl);
 
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isBadRequest())
@@ -138,7 +138,7 @@ public class UrlShortenerControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenBodyIsMalformed() throws Exception {
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -152,7 +152,7 @@ public class UrlShortenerControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenUrlDoesNotExists() throws Exception {
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/urls")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
                 .andExpect(status().isBadRequest())

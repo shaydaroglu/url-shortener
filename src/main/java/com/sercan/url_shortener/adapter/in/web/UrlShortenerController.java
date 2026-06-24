@@ -16,13 +16,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/")
 @RequiredArgsConstructor
 @Slf4j
 public class UrlShortenerController {
     private final ShortUrlUseCase shortUrlUseCase;
 
-    @PostMapping
+    @PostMapping("/api/v1/urls")
     public ResponseEntity<CreateShortUrlResponse> createShortUrl(@Valid @RequestBody CreateShortUrlRequest request,
                                                                  HttpServletRequest servletRequest) {
         log.info("Creating short URL for originalUrl={}", request.originalUrl());

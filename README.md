@@ -36,7 +36,7 @@ The project is intentionally kept simple and focused on the MVP requirements, wh
 ### Create short URL
 
 ```http
-POST /
+POST /api/v1/urls
 Content-Type: application/json
 ```
 
@@ -107,7 +107,7 @@ Error response:
 {
   "title": "Validation failed",
   "status": 400,
-  "detail": "original_url: URL must be a valid http or https URL",
+  "detail": "URL must be a valid http or https URL",
   "timestamp": "2026-06-24T00:00:00+02:00"
 }
 ```
@@ -262,7 +262,7 @@ make docker-clean  # Stop and remove Docker volumes
 Create a short URL:
 
 ```bash
-curl -i -X POST http://localhost:8080 \
+curl -i -X POST http://localhost:8080/api/v1/urls \
   -H "Content-Type: application/json" \
   -d '{"original_url":"https://www.google.com/search?q=url+shortener"}'
 ```
@@ -276,7 +276,7 @@ curl -i http://localhost:8080/byv5
 Invalid URL:
 
 ```bash
-curl -i -X POST http://localhost:8080 \
+curl -i -X POST http://localhost:8080/api/v1/urls \
   -H "Content-Type: application/json" \
   -d '{"original_url":"https://youtube"}'
 ```
@@ -317,5 +317,4 @@ There is no authentication, analytics, rate limiting, caching, or abuse detectio
 * Add expiration support
 * Add soft deletion / deactivation
 * Add OpenAPI documentation
-* Add more integration tests
 * Add monitoring and structured logging
