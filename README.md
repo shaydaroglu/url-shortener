@@ -30,6 +30,8 @@ The project is intentionally kept simple and focused on the MVP requirements, wh
 * Manage schema with Flyway
 * Run locally or with Docker
 * Basic test coverage for service, controller, and persistence layers
+* Basic static frontend served by Spring Boot 
+* Simple HTML/CSS/JavaScript form for creating short URLs
 
 ## API Endpoints
 
@@ -83,6 +85,25 @@ Response:
 302 Found
 Location: https://www.google.com/search?q=url+shortener
 ```
+## Frontend
+
+The application includes a simple static frontend served directly by Spring Boot.
+
+Static files are located under:
+
+```text
+src/main/resources/static
+```
+
+The frontend is available at:
+
+```text
+http://localhost:8080
+```
+
+It provides a basic form where the user can enter an original URL. The form sends a request to the backend API and displays either the generated short URL or the structured error response returned by the backend.
+
+No separate frontend build step is required.
 
 ## Validation
 
@@ -198,6 +219,7 @@ The application will start on:
 ```text
 http://localhost:8080
 ```
+Open this URL in the browser to use the static frontend.
 
 H2 console:
 
